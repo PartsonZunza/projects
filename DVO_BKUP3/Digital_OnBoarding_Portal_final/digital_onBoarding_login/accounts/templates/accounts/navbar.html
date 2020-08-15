@@ -1,0 +1,48 @@
+{% load static %}
+
+
+<style>
+  .hello-msg{
+    font-size: 25px;
+    color: #fff;
+    margin-right: 20px;
+
+</style>
+<style>
+img {
+  border-radius: 50%;
+  width:200px;
+height:100px;
+}
+</style>
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+ <img src="{% static 'images/fbc.png'   %}">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'home' %}"><h4>Home</h4></a>
+      </li>
+                <li class="nav-item">
+            <a class="nav-link" href="{% url 'products' %}"><h4>|View Products|</h4></a>
+      </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'product_add' %}"><h4>Add Products|</h4></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'product_configure' %}"><h4>Configure Products|</h4></a>
+      </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'reports' %}"><h4>Reports|</h4></a>
+      </li>
+
+    </ul>
+  </div>
+
+  <span class="hello-msg">Welcome, {{request.user}}</span>
+  <span ><a  class="hello-msg" href="{% url 'logout' %}">Logout</a></span>
+
+</nav>

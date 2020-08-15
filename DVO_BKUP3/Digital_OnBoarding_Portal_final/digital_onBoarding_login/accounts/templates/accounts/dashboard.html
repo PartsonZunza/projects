@@ -1,0 +1,135 @@
+{%  extends 'accounts/main.html' %}
+
+{% block content %}
+
+{%  include 'accounts/status.html' %}
+
+<br>
+
+<div class="row">
+	<div class="col-md-5">
+		<h5>Trending Products:</h5>
+		<hr>
+		<div class="card card-body">
+
+			<table class="table table-sm">
+				<tr>
+					<th></th>
+<th>Products</th>
+ 					<th>Applicable Currencies</th>
+				</tr>
+
+				{% for product in products %}
+
+
+
+					<tr>
+					<td> </td>
+						<td >{{product.productName}}</td>
+ 	<td width="100">{{product.applicableCurrencies}}</td>
+ 		 	</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+	<div class="col-md-5">
+
+		<body>
+<h1>......</h1>
+
+
+
+
+		<script>
+window.onload = function () {
+
+var chart = new CanvasJS.Chart("chartContain", {
+	exportEnabled: true,
+	animationEnabled: true,
+	title:{
+		text: "Currently Running Products"
+	},
+	legend:{
+		cursor: "pointer",
+		itemclick: explodePie
+	},
+	data: [{
+		type: "pie",
+		showInLegend: true,
+		toolTipContent: "{name}: <strong>{y}%</strong>",
+		indexLabel: "{name} - {y}%",
+		dataPoints: [
+			{ y: 26, name: "Mobile Moola Wallet ", exploded: true },
+			{ y: 20, name: "Instant Account" },
+			{ y: 5, name: "Current Account" },
+			{ y: 3, name: "Savings Account" },
+			{ y: 7, name: "FCA Account" },
+			{ y: 17, name: "Mortgage" },
+			{ y: 22, name: "Pfimbi Account"}
+		]
+	}]
+});
+chart.render();
+}
+
+function explodePie (e) {
+	if(typeof (e.dataSeries.dataPoints[e.dataPointIndex].exploded) === "undefined" || !e.dataSeries.dataPoints[e.dataPointIndex].exploded) {
+		e.dataSeries.dataPoints[e.dataPointIndex].exploded = true;
+	} else {
+		e.dataSeries.dataPoints[e.dataPointIndex].exploded = false;
+	}
+	e.chart.render();
+
+}
+</script>
+
+
+<div id="chartContain" style="height: 300px; width: 150%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+
+
+
+
+
+		</body>
+
+	</div>
+
+
+<!--	<div class="col-md-7">-->
+<!--		<h5>LAST 5 PRODUCTS</h5>-->
+<!--		<hr>-->
+<!--		<div class="card card-body">-->
+
+<!--			<table class="table table-sm">-->
+<!--				<tr>-->
+<!--					<th>Product</th>-->
+<!--					<th>Date added</th>-->
+<!--					<th>Status</th>-->
+<!--					<th>Update</th>-->
+<!--					<th>Remove</th>-->
+<!--				</tr>-->
+
+<!--				{% for order in orders %}-->
+<!--					<tr>-->
+<!--						<td>{{order.product}}</td>-->
+<!--						<td>{{order.date_created}}</td>-->
+<!--						<td>{{order.status}}</td>-->
+<!--						<td><a class="btn btn-sm btn-info" href="{% url 'update_order' order.id %}">Update</a></td>-->
+
+<!--						<td><a class="btn btn-sm btn-danger" href="{% url 'delete_order' order.id %}">Delete</a></td>-->
+
+<!--					</tr>-->
+				{% endfor %}
+
+
+			</table>
+		</div>
+	</div>
+
+</div>
+
+{% endblock %}
+

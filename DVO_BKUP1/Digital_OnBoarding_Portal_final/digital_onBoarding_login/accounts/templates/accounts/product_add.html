@@ -1,0 +1,150 @@
+
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'home' %}"><h4>Home</h4></a>
+      </li>
+                <li class="nav-item">
+            <a class="nav-link" href="{% url 'products' %}"><h4>|View Products|</h4></a>
+      </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'products' %}"><h4>Configure Products|</h4></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'products' %}"><h4>Reports|</h4></a>
+
+
+    </ul>
+  </div>
+
+
+
+</nav>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+	<link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}">
+
+    <style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+{% block content %}
+
+
+
+
+
+  <form method="POST"   action="{% url 'product_add' %}"  enctype="multipart/form-data">
+    {% csrf_token %}
+
+
+      <table border="1">
+          <tr >
+              <td>
+                  <h3>Select Product Image to upload:</h3></td><td>
+  <input type="file" name="fileToUpload" id="fileToUpload">
+
+              </td><td>      </td>
+          </tr>
+          <tr>
+              <td> <h3>Product Name: <input type="Text" width="100p%" id="name"></h3></td>
+
+
+
+
+   </tr>
+          <tr>
+              <td>
+                     <strong>Product Description:</strong><textarea id="description" name="description" rows="5" cols="100">
+
+</textarea>
+
+              </td>
+              <td><textarea id="id" rows="5" cols="100" disabled> </textarea>     </td>
+          </tr>
+          <tr>
+              <td>
+
+<p><strong>Product Terms </strong> : <textarea  id="terms" rows="5" cols="100"> </textarea></p>
+
+              </td>
+          </tr>
+          <tr>
+              <td>
+
+                   <p><strong>Product Conditions </strong>: <textarea  id="conditions" rows="5" cols="100" > </textarea></p>
+
+              </td>
+          </tr>
+          <tr>
+              <td>
+                  <p><strong>Product MinimumRequirements </strong>:  <textarea  id="requirements" rows="5" cols="100" > </textarea></p>
+
+              </td>
+          </tr>
+          <tr>
+              <td>
+                  <h3>Product Code ______                            :<input type="Text" id="code"  ></h3>
+
+              </td>
+
+
+          </tr>
+          <tr>
+              <td>
+                  <h3>Applicable Currencies  :<input type="Text" id="currency" > </h3>
+
+              </td>
+
+
+
+      </table>
+
+
+
+
+
+
+
+
+
+
+
+
+  <input type="submit" value="SAVE" name="submit">
+  </form>
+
+  <p><a href="{% url 'product_add' %}">Refresh</a></p>
+{% endblock %}
+</body>
+</html>

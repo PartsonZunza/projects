@@ -1,0 +1,141 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+            </button><div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+            <li class="nav-item active">
+            <a class="nav-link" href="{% url 'home' %}"><h4>Home</h4></a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="{% url 'products' %}"><h4>|View Products|</h4></a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="{% url 'products' %}"><h4>New Products|</h4></a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="{% url 'products' %}"><h4>Find Product|</h4></a>
+            </ul>
+            </div>
+            </nav>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+            <title>Title</title>
+                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+	                <link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}">
+                </head>
+            <body>
+
+                    <form  method="GET"  action="{% url 'update_product' %}" >
+<!--                    {% csrf_token %}-->
+<table border="1">
+    <a href="#" onclick=alertbox();><h3>Configure Product</h3></a>
+        <tr >
+            <td> <strong>Product Image:</strong> <input type="file" name="product_image" id="fileToUpload"><image src="data:image/png;base64,{{products_image}} " width="30%"></image></a></td>
+            <td> <strong>Product name </strong><h3><input type="Text" id="name" name="product_name" value="{{product_details}}" ></h3> </td>
+        </tr>
+    <tr>
+</tr>
+    <tr>
+        <td>
+        <strong>Product Description:</strong><textarea id="description" name="product_description" rows="5" cols="100">{{product_shortdescription}}</textarea>
+    </td>
+</tr>
+    <tr>
+       <td>
+            <p><strong>Product Terms </strong> : <textarea  id="terms" name="product_terms" rows="5" cols="100">{{products_Terms}}</textarea></p>
+            </td>
+        </tr>
+    <td>
+<p><strong>Product Conditions </strong>: <textarea  id="conditions" name="product_conditions" rows="5" cols="100" >{{products_Conditions}}</textarea></p>
+    </td>
+        <tr>
+            <td>
+                </td>
+                    </tr>
+                        <td>
+                            <p><strong>Product MinimumRequirements </strong>:  <textarea  id="requirements" name="product_requirements" rows="5" cols="100" >{{products_MinimumRequirements}}</textarea></p>
+                        </td>
+                    <tr>
+                <td>
+             <p><strong>Product Code </strong>: <input type="Text" id="code" name="product_code" value="{{products_Code}}"></p>
+        </td>
+    <td>
+<p><strong>Product applicable_Currencies </strong> : <input type="Text" id="currency" name="product_currency" value="{{products_applicable_Currencies}}"></p>
+    </td>
+        </tr>
+            <td>
+                </td>
+                    </td>
+                        </tr>
+                    </table>
+                                    <button type="submit"   id="test" value="Submit"  >Save</button>
+                    </form>
+</body>
+
+
+
+<script>
+document.getElementById("test").disabled = true;
+document.getElementById("description").disabled = true;
+document.getElementById("name").disabled = true;
+document.getElementById("terms").disabled = true;
+document.getElementById("conditions").disabled = true;
+document.getElementById("currency").disabled = true;
+document.getElementById("requirements").disabled = true;
+document.getElementById("code").disabled = true;
+
+
+
+
+
+
+
+</script>
+
+<script>
+  function alertbox()  {
+
+
+        document.getElementById("test").disabled = false;
+        document.getElementById("description").disabled = false;
+        document.getElementById("name").disabled = false;
+        document.getElementById("terms").disabled = false;
+        document.getElementById("conditions").disabled = false;
+        document.getElementById("currency").disabled = false;
+        document.getElementById("requirements").disabled = false;
+        document.getElementById("code").disabled = false;
+                }
+
+   function save_update(){
+
+        var short_des=document.getElementById("description").value;
+
+        alert(short_des);
+
+
+
+
+   }
+</script>
+
+
+
+
+
+
+
+<body/>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</html>
+
+
+
+

@@ -1,0 +1,35 @@
+{%  extends 'accounts/main.html' %}
+
+{% block content %}
+
+		<br>
+
+		<div class="row">
+			<div class="col-md">
+				<div class="card card-body">
+					<h5>All Marketing Products</h5>
+				</div>
+				<div class="card card-body">
+					<table class="table">
+						<tr>
+							<th>Products</th>
+							<th>Short Description</th>
+							<th>Action</th>
+						</tr>
+
+						{% for product in products_json %}
+							<tr>
+								<td>{{product.productName}}</td>
+								<td>{{product.shortDescription}}</td>
+								<td><a href="/product_view/{{product.id}}"><strong>View</strong>
+								</a></td>
+							</tr>
+						{% endfor %}
+						
+					</table>
+				</div>
+			</div>
+			
+		</div>
+
+{% endblock content %}
